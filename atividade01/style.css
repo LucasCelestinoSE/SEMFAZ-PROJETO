@@ -1,0 +1,108 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.menu-wrapper {
+  position: relative;
+  height: 100vh;
+  width: 70vw;
+}
+
+.menu-container {
+  height: 100%;
+  width: 100%;
+  background-color: blueviolet;
+}
+
+.elementos-menu {
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.icon {
+  position: absolute;
+  top: 20px;
+  left: 60vw;
+  z-index: 20;
+  cursor: pointer;
+}
+
+.mini-barra {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 60px;
+  background-color: darkslateblue;
+}
+
+#btn-trigger {
+  display: none;
+}
+
+/* ---------- Comportamento DESKTOP (padrão) ---------- */
+#btn-trigger:checked ~ .menu-container {
+  display: none;
+}
+
+#btn-trigger:checked ~ .mini-barra {
+  display: block;
+}
+
+#btn-trigger:checked ~ .icon {
+  left: 10px;
+}
+
+
+/* ---------- Comportamento MOBILE ---------- */
+@media (max-width: 768px) {
+
+  .menu-wrapper {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  /* No mobile, o menu grande começa ESCONDIDO */
+  .menu-container {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  /* No mobile, a barrinha vira uma faixa no TOPO, visível por padrão */
+  .mini-barra {
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+  }
+
+  /* Ícone fixo no canto da barra de topo */
+  .icon {
+    top: 15px;
+    left: auto;
+    right: 15px;
+  }
+
+  /* Ao clicar: some a barrinha de topo, aparece o menu em tela cheia */
+  #btn-trigger:checked ~ .mini-barra {
+    display: none;
+  }
+
+  #btn-trigger:checked ~ .menu-container {
+    display: block;
+  }
+
+  /* Ícone continua no canto, agora sobre o menu cheio */
+  #btn-trigger:checked ~ .icon {
+    top: 15px;
+    left: auto;
+    right: 15px;
+  }
+}
